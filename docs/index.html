@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas de Prompting para Periodistas | AI Media Lab</title>
+    <meta name="description" content="Guía completa sobre técnicas de prompting con IA para profesionales del periodismo. Desarrollado por AI Media Lab.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        .section-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">AI Media Lab</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-purple-600 transition">Inicio</a>
+                    <a href="#contenido" class="text-gray-700 hover:text-purple-600 transition">Contenido</a>
+                    <a href="#herramientas" class="text-gray-700 hover:text-purple-600 transition">Herramientas</a>
+                    <a href="#recursos" class="text-gray-700 hover:text-purple-600 transition">Recursos</a>
+                    <button onclick="toggleLanguage()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                        <i class="fas fa-language mr-2"></i><span id="langBtn">PT</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20 section-pattern">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                <span id="heroTitle">Técnicas de Prompting para Periodistas</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90" id="heroSubtitle">
+                Domina el arte de comunicarte con la IA para potenciar tu trabajo periodístico
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#contenido" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    <span id="startBtn">Comenzar</span>
+                </a>
+                <a href="https://github.com/tu-usuario/tecnicas-prompting" target="_blank" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-purple-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" id="feat1Title">Inicio Rápido</h3>
+                    <p class="text-gray-600" id="feat1Desc">Aprende los fundamentos en minutos y comienza a aplicarlos inmediatamente</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-indigo-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-newspaper text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" id="feat2Title">Casos Reales</h3>
+                    <p class="text-gray-600" id="feat2Desc">Ejemplos prácticos basados en situaciones periodísticas cotidianas</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-pink-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-pink-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" id="feat3Title">Ética Primero</h3>
+                    <p class="text-gray-600" id="feat3Desc">Lineamientos claros para un uso responsable y transparente de la IA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section id="contenido" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" id="contentTitle">Contenido del Curso</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Module 1 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover transition-all">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3">1</span>
+                        <h3 class="text-xl font-semibold">Fundamentos</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4" id="mod1Desc">¿Qué es un prompt? Diferencias entre prompts genéricos y específicos.</p>
+                    <a href="es/01-fundamentos.md" class="text-purple-600 hover:text-purple-700 font-medium">
+                        <span id="learnMore">Aprender más</span> <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover transition-all">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3">2</span>
+                        <h3 class="text-xl font-semibold">Elementos</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4" id="mod2Desc">Los 4 elementos esenciales: Claridad, Contexto, Instrucciones y Formato.</p>
+                    <a href="es/02-elementos.md" class="text-purple-600 hover:text-purple-700 font-medium">
+                        <span class="learn-more">Aprender más</span> <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover transition-all">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-purple-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3">3</span>
+                        <h3 class="text-xl font-semibold">Casos de Uso</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4" id="mod3Desc">Aplicaciones prácticas: titulares, resúmenes, análisis de documentos.</p>
+                    <a href="es/03-casos-uso.md" class="text-purple-600 hover:text-purple-700 font-medium">
+                        <span class="learn-more">Aprender más</span> <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover transition-all">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3">4</span>
+                        <h3 class="text-xl font-semibold" id="mod4Title">Técnicas Avanzadas</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4" id="mod4Desc">Tree-of-Thoughts, ReAct y otras técnicas sofisticadas.</p>
+                    <a href="es/04-tecnicas-avanzadas.md" class="text-purple-600 hover:text-purple-700 font-medium">
+                        <span class="learn-more">Aprender más</span> <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover transition-all">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3">5</span>
+                        <h3 class="text-xl font-semibold" id="mod5Title">Ética y Limitaciones</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4" id="mod5Desc">Consideraciones éticas, verificación y transparencia.</p>
+                    <a href="es/05-limitaciones-etica.md" class="text-purple-600 hover:text-purple-700 font-medium">
+                        <span class="learn-more">Aprender más</span> <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover transition-all">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-3">6</span>
+                        <h3 class="text-xl font-semibold" id="mod6Title">Herramientas</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4" id="mod6Desc">Google AI Studio, Gemini, NotebookLM y más.</p>
+                    <a href="es/06-herramientas.md" class="text-purple-600 hover:text-purple-700 font-medium">
+                        <span class="learn-more">Aprender más</span> <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="herramientas" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" id="toolsTitle">Herramientas Recomendadas</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="https://gemini.google.com" target="_blank" class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini" class="w-16 h-16 mx-auto mb-4">
+                    <h3 class="font-semibold">Google Gemini</h3>
+                </a>
+                
+                <a href="https://aistudio.google.com" target="_blank" class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <i class="fab fa-google text-4xl text-blue-600 mb-4 block"></i>
+                    <h3 class="font-semibold">AI Studio</h3>
+                </a>
+                
+                <a href="https://notebooklm.google.com" target="_blank" class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <i class="fas fa-book text-4xl text-green-600 mb-4 block"></i>
+                    <h3 class="font-semibold">NotebookLM</h3>
+                </a>
+                
+                <a href="https://journaliststudio.google.com/pinpoint" target="_blank" class="bg-gray-50 rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <i class="fas fa-map-pin text-4xl text-red-600 mb-4 block"></i>
+                    <h3 class="font-semibold">Pinpoint</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="recursos" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" id="resourcesTitle">Recursos Adicionales</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4" id="booksTitle">📚 Libros</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Prompt Engineering for Generative AI</li>
+                        <li>• Dominando el Arte del Prompting</li>
+                        <li id="bookMore">• Ver más en el repositorio...</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4" id="coursesTitle">🎓 Cursos</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Knight Center - IA para Periodistas</li>
+                        <li>• Google News Initiative</li>
+                        <li id="courseMore">• Más cursos disponibles...</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4" id="comTitle">🌐 Comunidades</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• r/JournalismAI</li>
+                        <li>• #PeriodistasTech</li>
+                        <li>• GIJN Network</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4" id="ctaTitle">¿Listo para empezar?</h2>
+            <p class="text-xl mb-8" id="ctaText">Accede a todo el contenido y ejemplos prácticos en nuestro repositorio</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://github.com/tu-usuario/tecnicas-prompting" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    <i class="fab fa-github mr-2"></i><span id="accessRepo">Acceder al Repositorio</span>
+                </a>
+                <a href="recursos/prompts-utilizados.md" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                    <span id="viewExamples">Ver Ejemplos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <p class="mb-2" id="footerCreated">Creado por <a href="https://www.linkedin.com/in/reinaldochaves/" class="text-purple-400 hover:text-purple-300">Reinaldo Chaves</a> para AI Media Lab</p>
+                    <p class="text-sm" id="footerLicense">Licencia Creative Commons Attribution 4.0</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://twitter.com/" class="hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="https://github.com/" class="hover:text-white"><i class="fab fa-github text-xl"></i></a>
+                    <a href="https://linkedin.com/" class="hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        let currentLang = 'es';
+        
+        const translations = {
+            es: {
+                heroTitle: "Técnicas de Prompting para Periodistas",
+                heroSubtitle: "Domina el arte de comunicarte con la IA para potenciar tu trabajo periodístico",
+                startBtn: "Comenzar",
+                feat1Title: "Inicio Rápido",
+                feat1Desc: "Aprende los fundamentos en minutos y comienza a aplicarlos inmediatamente",
+                feat2Title: "Casos Reales",
+                feat2Desc: "Ejemplos prácticos basados en situaciones periodísticas cotidianas",
+                feat3Title: "Ética Primero",
+                feat3Desc: "Lineamientos claros para un uso responsable y transparente de la IA",
+                contentTitle: "Contenido del Curso",
+                mod1Desc: "¿Qué es un prompt? Diferencias entre prompts genéricos y específicos.",
+                mod2Desc: "Los 4 elementos esenciales: Claridad, Contexto, Instrucciones y Formato.",
+                mod3Desc: "Aplicaciones prácticas: titulares, resúmenes, análisis de documentos.",
+                mod4Title: "Técnicas Avanzadas",
+                mod4Desc: "Tree-of-Thoughts, ReAct y otras técnicas sofisticadas.",
+                mod5Title: "Ética y Limitaciones",
+                mod5Desc: "Consideraciones éticas, verificación y transparencia.",
+                mod6Title: "Herramientas",
+                mod6Desc: "Google AI Studio, Gemini, NotebookLM y más.",
+                toolsTitle: "Herramientas Recomendadas",
+                resourcesTitle: "Recursos Adicionales",
+                booksTitle: "📚 Libros",
+                coursesTitle: "🎓 Cursos",
+                comTitle: "🌐 Comunidades",
+                bookMore: "• Ver más en el repositorio...",
+                courseMore: "• Más cursos disponibles...",
+                ctaTitle: "¿Listo para empezar?",
+                ctaText: "Accede a todo el contenido y ejemplos prácticos en nuestro repositorio",
+                accessRepo: "Acceder al Repositorio",
+                viewExamples: "Ver Ejemplos",
+                footerCreated: "Creado por",
+                footerLicense: "Licencia Creative Commons Attribution 4.0",
+                learnMore: "Aprender más"
+            },
+            pt: {
+                heroTitle: "Técnicas de Prompting para Jornalistas",
+                heroSubtitle: "Domine a arte de se comunicar com IA para potencializar seu trabalho jornalístico",
+                startBtn: "Começar",
+                feat1Title: "Início Rápido",
+                feat1Desc: "Aprenda os fundamentos em minutos e comece a aplicá-los imediatamente",
+                feat2Title: "Casos Reais",
+                feat2Desc: "Exemplos práticos baseados em situações jornalísticas cotidianas",
+                feat3Title: "Ética Primeiro",
+                feat3Desc: "Diretrizes claras para uso responsável e transparente da IA",
+                contentTitle: "Conteúdo do Curso",
+                mod1Desc: "O que é um prompt? Diferenças entre prompts genéricos e específicos.",
+                mod2Desc: "Os 4 elementos essenciais: Clareza, Contexto, Instruções e Formato.",
+                mod3Desc: "Aplicações práticas: títulos, resumos, análise de documentos.",
+                mod4Title: "Técnicas Avançadas",
+                mod4Desc: "Tree-of-Thoughts, ReAct e outras técnicas sofisticadas.",
+                mod5Title: "Ética e Limitações",
+                mod5Desc: "Considerações éticas, verificação e transparência.",
+                mod6Title: "Ferramentas",
+                mod6Desc: "Google AI Studio, Gemini, NotebookLM e mais.",
+                toolsTitle: "Ferramentas Recomendadas",
+                resourcesTitle: "Recursos Adicionais",
+                booksTitle: "📚 Livros",
+                coursesTitle: "🎓 Cursos",
+                comTitle: "🌐 Comunidades",
+                bookMore: "• Ver mais no repositório...",
+                courseMore: "• Mais cursos disponíveis...",
+                ctaTitle: "Pronto para começar?",
+                ctaText: "Acesse todo o conteúdo e exemplos práticos em nosso repositório",
+                accessRepo: "Acessar Repositório",
+                viewExamples: "Ver Exemplos",
+                footerCreated: "Criado por",
+                footerLicense: "Licença Creative Commons Attribution 4.0",
+                learnMore: "Aprender mais"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'pt' : 'es';
+            document.getElementById('langBtn').textContent = currentLang === 'es' ? 'PT' : 'ES';
+            
+            // Update all translatable elements
+            Object.keys(translations[currentLang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+            
+            // Update learn more links
+            document.querySelectorAll('.learn-more').forEach(el => {
+                el.textContent = translations[currentLang].learnMore;
+            });
+            
+            // Update href links to correct language folder
+            const langFolder = currentLang === 'es' ? 'es' : 'pt-br';
+            document.querySelectorAll('a[href*="/es/"], a[href*="/pt-br/"]').forEach(link => {
+                link.href = link.href.replace(/\/(es|pt-br)\//, `/${langFolder}/`);
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
