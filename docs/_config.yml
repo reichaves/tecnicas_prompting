@@ -1,0 +1,82 @@
+# Configuración de Jekyll para GitHub Pages
+
+# Información del sitio
+title: Técnicas de Prompting para Periodistas
+description: Guía completa sobre técnicas de prompting con IA para profesionales del periodismo
+author: Reinaldo Chaves / AI Media Lab
+email: contacto@ejemplo.com
+url: https://tu-usuario.github.io
+baseurl: /tecnicas-prompting-periodistas
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Excluir archivos
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Colecciones
+collections:
+  es:
+    output: true
+    permalink: /es/:name/
+  pt-br:
+    output: true
+    permalink: /pt-br/:name/
+
+# Valores por defecto
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: "es"
+      type: "pages"
+    values:
+      layout: "page"
+      lang: "es"
+  - scope:
+      path: "pt-br"
+      type: "pages"
+    values:
+      layout: "page"
+      lang: "pt"
+
+# Configuración de idiomas
+languages: ["es", "pt"]
+default_lang: "es"
+
+# SEO y Social
+twitter:
+  username: tu_usuario
+  card: summary_large_image
+
+social:
+  name: AI Media Lab
+  links:
+    - https://twitter.com/tu_usuario
+    - https://github.com/tu_usuario
+    - https://linkedin.com/in/reinaldochaves
+
+# Google Analytics (opcional)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Configuración adicional para GitHub Pages
+github: [metadata]
+encoding: UTF-8
