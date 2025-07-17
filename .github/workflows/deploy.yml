@@ -1,0 +1,22 @@
+- name: Setup Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: '18'
+      
+  - name: Install dependencies
+    run: |
+      npm install -g markdown-pdf
+      npm install -g @mermaid-js/mermaid-cli
+      
+  - name: Build site
+    run: |
+      # Copiar archivos markdown a docs
+      mkdir -p docs/es docs/pt-br docs/recursos
+      cp -r es/*.md docs/es/
+      cp -r pt-br/*.md docs/pt-br/
+      cp -r recursos/*.md docs/recursos/
+      
+  - name: Upload artifact
+    uses: actions/upload-pages-artifact@v2
+    with:
+      path: ./docs
