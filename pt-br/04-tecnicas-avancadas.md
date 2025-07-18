@@ -1,288 +1,355 @@
-# 04 - Técnicas Avançadas de Prompting
+# Técnicas Avançadas de Prompting
 
-Este capítulo explora métodos sofisticados para obter resultados superiores dos modelos de IA, especialmente úteis para investigações complexas e projetos jornalísticos ambiciosos.
+Este capítulo apresenta metodologias sofisticadas de prompting que podem transformar a qualidade e eficácia do seu trabalho jornalístico com IA. Essas técnicas vão além do prompting básico e oferecem abordagens estruturadas para problemas complexos.
 
-## 🌳 Tree-of-Thoughts (Árvore de Pensamentos)
+## 1. Chain-of-Thought (Cadeia de Pensamento)
 
-### O que é?
-Uma técnica que faz a IA explorar múltiplos ramos de pensamento antes de decidir uma resposta, similar a como um jornalista avalia diferentes ângulos de uma história.
+### Conceito
+O Chain-of-Thought prompting encoraja o modelo a mostrar seu processo de raciocínio passo a passo, resultando em respostas mais precisas e verificáveis.
 
-### Estrutura Básica
+### Aplicação em Jornalismo
+
+#### Análise de Dados Complexos
 ```
-"Explore este tema considerando múltiplas perspectivas:
+"Analise estes dados de criminalidade da cidade de São Paulo nos últimos 5 anos. Pense passo a passo:
 
-1. Primeiro, identifique 3-4 abordagens possíveis
-2. Para cada abordagem, desenvolva os argumentos principais
-3. Avalie prós e contras de cada perspectiva
-4. Sintetize uma conclusão balanceada
+1. Primeiro, identifique as tendências gerais nos números
+2. Em seguida, identifique padrões sazonais ou geográficos
+3. Depois, compare com dados de contexto (população, políticas públicas)
+4. Finalmente, formule hipóteses sobre as causas das variações
 
-Tema: [Seu tema aqui]"
-```
+Para cada passo, mostre seu raciocínio e as evidências que sustentam suas conclusões.
 
-### Exemplo Jornalístico
-```
-"Como editor investigativo, analise a proposta de lei sobre privacidade 
-digital:
-
-1. Identifique 4 perspectivas-chave:
-   - Defensores da privacidade
-   - Empresas de tecnologia
-   - Governo/segurança
-   - Cidadãos comuns
-
-2. Para cada perspectiva, desenvolva:
-   - Argumentos principais
-   - Interesses em jogo
-   - Possíveis consequências
-
-3. Avalie conflitos entre perspectivas
-
-4. Proponha ângulos jornalísticos para cobrir o tema"
+Dados: [inserir dados estruturados]"
 ```
 
-### Quando Usar Tree-of-Thoughts
-- Investigações com múltiplos stakeholders
-- Análise de políticas públicas
-- Cobertura de temas controversos
-- Planejamento de séries investigativas
-
-## 🔄 ReAct (Reasoning and Acting)
-
-### O que é?
-Combina raciocínio passo a passo com ações específicas, permitindo que o modelo "pense em voz alta" antes de responder.
-
-### Estrutura ReAct
+#### Verificação de Informações
 ```
-"Passo 1 - Raciocínio: [Analise a situação]
-Passo 2 - Ação: [O que fazer baseado na análise]
-Passo 3 - Observação: [O que resultou da ação]
-Passo 4 - Conclusão: [Síntese final]"
+"Vou te dar uma afirmação de um político. Quero que você avalie sua veracidade pensando em etapas:
+
+Afirmação: "O Brasil reduziu a pobreza em 60% nos últimos 10 anos"
+
+Etapa 1: Identifique os elementos verificáveis desta afirmação
+Etapa 2: Determine que tipo de dados seriam necessários para verificar
+Etapa 3: Avalie a plausibilidade baseada em conhecimento geral
+Etapa 4: Indique possíveis fontes para checagem
+Etapa 5: Classifique preliminarmente como: verificável/não verificável, plausível/implausível
+
+Mostre seu raciocínio para cada etapa."
 ```
 
-### Aplicação em Fact-Checking
+## 2. Tree-of-Thoughts (Árvore de Pensamentos)
+
+### Conceito
+Esta técnica explora múltiplos caminhos de raciocínio simultaneamente, permitindo backtracking e refinamento de ideias.
+
+### Aplicação Prática
+
+#### Desenvolvimento de Pauta Investigativa
 ```
-"Verifique esta afirmação usando o método ReAct:
-'O desemprego juvenil aumentou 50% no último ano'
+"Tenho indícios de irregularidades em contratos de merenda escolar. Vamos explorar diferentes caminhos investigativos:
 
-Raciocínio: Primeiro devo identificar qual período específico é 
-mencionado e quais fontes oficiais reportam desemprego juvenil.
+RAMO 1 - Análise Financeira:
+- Investigar valores dos contratos
+- Comparar preços com mercado
+- Analisar histórico dos fornecedores
 
-Ação: Buscar dados do IBGE para o último ano disponível.
+RAMO 2 - Análise Processual:
+- Examinar processo licitatório
+- Verificar cumprimento de prazos
+- Checar documentação exigida
 
-Observação: [Incluir dados encontrados]
+RAMO 3 - Impacto na Ponta:
+- Qualidade da merenda entregue
+- Relatos de estudantes e professores
+- Dados nutricionais
 
-Raciocínio: Comparar com o ano anterior e calcular a porcentagem 
-real de mudança.
+Para cada ramo, desenvolva:
+1. Fontes de informação específicas
+2. Documentos necessários
+3. Pessoas-chave para entrevistar
+4. Possíveis obstáculos
+5. Força probatória esperada
 
-Conclusão: A afirmação é [verificada/falsa/parcialmente correta] 
-porque..."
-```
-
-## 📚 Bibliotecas e Templates
-
-### Criando sua Biblioteca Pessoal
-
-#### Template: Investigação de Antecedentes
-```
-PROMPT: Perfil de Investigação
-
-Você é um jornalista investigativo preparando um perfil sobre [SUJEITO].
-
-Compile e organize:
-1. Informação biográfica básica
-2. Trajetória profissional
-3. Conexões empresariais/políticas
-4. Declarações públicas relevantes
-5. Controvérsias ou investigações prévias
-6. Patrimônio declarado (se público)
-
-Fontes a considerar:
-- Registros públicos
-- Declarações de bens
-- Notícias anteriores
-- Redes sociais profissionais
-
-Formato: Relatório executivo com seções claramente marcadas
-Advertências: Sinalize informação não verificada ou rumores
+Depois, avalie qual combinação de ramos oferece a melhor estratégia investigativa."
 ```
 
-#### Template: Análise de Dados
+## 3. ReAct (Reasoning and Acting)
+
+### Conceito
+Combina raciocínio com ações específicas, criando um ciclo iterativo de pensamento e execução.
+
+### Estrutura ReAct para Jornalismo
+
 ```
-PROMPT: Análise Jornalística de Dados
+"Vou investigar alegações de superfaturamento em obra pública. Use o método ReAct:
 
-Contexto: Tenho um dataset sobre [TEMA] com as seguintes variáveis:
-[LISTA DE VARIÁVEIS]
+PENSAMENTO: [Analise a situação e determine próximos passos]
+AÇÃO: [Especifique que ação tomar]
+OBSERVAÇÃO: [Avalie resultados da ação]
+PENSAMENTO: [Reajuste estratégia baseado nos resultados]
+AÇÃO: [Nova ação baseada no aprendizado]
 
-Tarefas:
-1. Identifique as 3 tendências mais significativas
-2. Busque correlações relevantes
-3. Detecte anomalias ou outliers
-4. Sugira visualizações apropriadas
-5. Formule perguntas para investigação adicional
+Comece com:
+PENSAMENTO: Preciso estabelecer uma estratégia para investigar alegações de superfaturamento na construção do hospital municipal. Quais são os primeiros passos mais eficazes?
 
-Considerações:
-- Tamanho da amostra
-- Possíveis vieses nos dados
-- Limitações do dataset
-- Contexto socioeconômico
-
-Entrega: Bullet points com achados-chave + parágrafo narrativo
-```
-
-## 🔗 Prompting em Cadeia
-
-### O que é?
-Técnica de usar múltiplos prompts sequenciais onde cada um constrói sobre o anterior.
-
-### Exemplo: Investigação em 4 Passos
-
-**Prompt 1 - Exploração**
-```
-"Liste os 10 principais atores envolvidos no caso de 
-corrupção na [empresa/instituição]"
+Continue o ciclo por pelo menos 5 iterações, construindo uma estratégia investigativa robusta."
 ```
 
-**Prompt 2 - Aprofundamento**
-```
-"Para os 3 atores mais importantes da lista anterior, detalhe:
-- Papel específico
-- Conexões entre eles
-- Benefícios obtidos"
-```
+## 4. Few-Shot Prompting Avançado
 
-**Prompt 3 - Verificação**
+### Técnica de Exemplificação Progressiva
+
+#### Para Entrevistas Investigativas
 ```
-"Identifique quais afirmações da análise anterior precisam 
-de verificação adicional e sugira fontes para confirmá-las"
-```
+"Vou te mostrar exemplos de como fazer perguntas investigativas eficazes, depois você criará similares para nosso caso:
 
-**Prompt 4 - Narrativa**
-```
-"Construa um lead de 100 palavras que capture a essência 
-desta investigação, começando com o achado mais impactante"
-```
+EXEMPLO 1 - Pergunta Direta com Evidência:
+"Temos aqui o contrato assinado pelo senhor em março, no valor de R$ 2 milhões. Como explica que a empresa beneficiada foi criada apenas duas semanas antes da licitação?"
 
-## 🎯 Few-Shot Prompting
+EXEMPLO 2 - Pergunta de Confronto Educada:
+"O senhor declarou ontem que não conhece o empresário João Silva. Mas temos aqui 15 fotos dos dois juntos em eventos nos últimos dois anos. Pode nos ajudar a entender essa aparente contradição?"
 
-### O que é?
-Fornecer exemplos específicos do tipo de resposta que você busca.
+EXEMPLO 3 - Pergunta Sequencial:
+"Vamos por partes: primeiro, confirma que assinou este documento? Segundo, lembra das circunstâncias? Terceiro, pode explicar por que o processo foi acelerado?"
 
-### Estrutura
-```
-"Quero títulos neste estilo:
+Agora crie 5 perguntas no mesmo estilo para este caso:
+Situação: Secretário de Saúde que autorizou compra de equipamentos com preço 300% acima do mercado de uma empresa ligada a seu cunhado.
 
-Exemplo 1: 'Revelam rede de subornos: 15 funcionários implicados'
-Exemplo 2: 'Exclusivo: Documentos mostram desvio milionário'
-Exemplo 3: 'Investigam ministro por conflito de interesse'
-
-Agora crie 5 títulos similares para esta notícia: [NOTÍCIA]"
+Evidências disponíveis: [listar evidências]
 ```
 
-### Quando é Mais Efetivo
-- Quando precisa de consistência de estilo
-- Para formatos específicos do veículo
-- Ao treinar novos colaboradores
-- Para manter tom editorial
+## 5. Prompt Chaining (Encadeamento de Prompts)
 
-## 🧩 Combinação de Técnicas
+### Metodologia
+Quebrar tarefas complexas em prompts sequenciais, onde cada saída alimenta o próximo prompt.
 
-### Super-Prompt Investigativo
+#### Série Investigativa: Da Denúncia à Publicação
+
+**Prompt 1 - Análise Inicial:**
 ```
-[CONTEXTO - System Instructions]
-Você é um jornalista investigativo sênior da Folha de S.Paulo 
-especializado em seguir o dinheiro em casos de corrupção.
+"Recebi esta denúncia anônima sobre corrupção na prefeitura. Analise a credibilidade inicial:
 
-[TREE-OF-THOUGHTS]
-Analise o seguinte caso de 3 perspectivas:
-1. Fluxo financeiro
-2. Rede de contatos
-3. Timeline de eventos
+Denúncia: [texto da denúncia]
 
-[REACT]
-Para cada perspectiva:
-- Raciocine o que buscar
-- Identifique fontes necessárias
-- Antecipe obstáculos
+Avalie:
+1. Consistência interna da narrativa
+2. Especificidade das informações
+3. Verificabilidade das alegações
+4. Possíveis motivações do denunciante
+5. Sinais de alerta (muito vago ou muito específico)
 
-[FEW-SHOT]
-Formato de saída como estes exemplos:
-- "ACHADO: [descrição] | FONTE: [tipo] | VERIFICAÇÃO: [método]"
-
-[CHAIN]
-Finalmente, proponha os próximos 5 passos de investigação em ordem 
-de prioridade.
+Resultado: [resumo + recomendação de prosseguir ou não]"
 ```
 
-## 💡 Técnicas Específicas por Tipo de Cobertura
+**Prompt 2 - Estratégia de Verificação:**
+```
+"Baseado na análise anterior: [inserir resultado do Prompt 1]
 
-### Para Investigação Financeira
-```
-"Modo: Análise forense financeira
-1. Rastreie fluxos de dinheiro entre entidades
-2. Identifique padrões suspeitos
-3. Marque transações que requerem escrutínio
-4. Sugira especialistas para consultar"
-```
+Desenvolva uma estratégia de verificação de 30 dias:
 
-### Para Cobertura Eleitoral
-```
-"Modo: Análise eleitoral multidimensional
-1. Tendências demográficas
-2. Comparação histórica
-3. Fatores externos influentes
-4. Cenários prováveis com porcentagens"
+Semana 1: [ações prioritárias]
+Semana 2: [aprofundamento]
+Semana 3: [confirmações cruzadas]
+Semana 4: [preparação para publicação]
+
+Para cada semana, especifique:
+- Documentos a buscar
+- Pessoas a contactar
+- Pedidos de informação a fazer
+- Deadlines internos"
 ```
 
-### Para Jornalismo de Dados
+**Prompt 3 - Preparação de Entrevistas:**
 ```
-"Modo: Data journalist
-1. Limpeza de dados - o que eliminar/corrigir
-2. Variáveis-chave para a história
-3. Correlações vs causações
-4. Visualização mais impactante"
-```
+"Com base na estratégia desenvolvida: [inserir resultado do Prompt 2]
 
-## 📈 Otimização de Resultados
+Crie roteiros de entrevista para cada pessoa-chave identificada:
 
-### Técnica de Refinamento Iterativo
-1. **Prompt inicial**: Amplo e exploratório
-2. **Refinamento 1**: Foca em achados interessantes
-3. **Refinamento 2**: Aprofunda em detalhes específicos
-4. **Polimento final**: Ajusta tom e formato
-
-### Exemplo Prático
-```
-Iteração 1: "Analise tendências em educação pública"
-Iteração 2: "Foque na desigualdade rural-urbana identificada"
-Iteração 3: "Detalhe casos específicos de 3 municípios"
-Iteração 4: "Reescreva com tom humano, incluindo depoimentos"
+Para cada entrevistado, desenvolva:
+1. Objetivos específicos da conversa
+2. Perguntas de aquecimento
+3. Perguntas centrais
+4. Perguntas de confronto (se aplicável)
+5. Documentos para apresentar
+6. Estratégia para obter documentos adicionais"
 ```
 
-## 🛠️ Ferramentas Complementares
+## 6. Role-Playing Prompts
 
-### Prompts para Diferentes Ferramentas
+### Simulação de Múltiplas Perspectivas
 
-**Para NotebookLM**
 ```
-"Analise estes 10 documentos e crie:
-1. Resumo executivo de achados comuns
-2. Contradições entre documentos
-3. Linha temporal unificada
-4. Pessoas mencionadas com frequência"
+"Vamos simular uma mesa redonda sobre a nova lei de proteção de dados pessoais. Você representará diferentes perspectivas:
+
+ADVOGADO ESPECIALISTA EM TECNOLOGIA:
+[Posição sobre aspectos legais e técnicos]
+
+REPRESENTANTE DE EMPRESA DE TECNOLOGIA:
+[Preocupações com compliance e custos]
+
+ATIVISTA DE DIREITOS DIGITAIS:
+[Foco em proteção do cidadão]
+
+PARLAMENTAR AUTOR DA LEI:
+[Defesa das intenções da legislação]
+
+Para cada perspectiva, forneça:
+1. Principais argumentos
+2. Preocupações específicas
+3. Propostas de solução
+4. Críticas às outras perspectivas
+
+Depois, identifique:
+- Pontos de consenso
+- Conflitos irreconciliáveis
+- Áreas para negociação
+- Perguntas que um jornalista deveria fazer a cada um"
 ```
 
-**Para Google AI Studio com Code Execution**
+## 7. Prompts de Verificação Cruzada
+
+### Metodologia Anti-Viés
+
 ```
-"Analise este CSV de gastos governamentais:
-1. Calcule totais por departamento
-2. Identifique aumentos superiores a 50%
-3. Crie gráfico de tendências
-4. Marque anomalias estatísticas"
+"Vou te apresentar uma análise que fiz sobre [TÓPICO]. Quero que você faça uma verificação crítica:
+
+MINHA ANÁLISE: [inserir análise original]
+
+VERIFICAÇÃO SOLICITADA:
+1. Contra-argumentos: Que evidências contradizem minha análise?
+2. Perspectivas ausentes: Que pontos de vista não considerei?
+3. Vieses potenciais: Que preconceitos podem ter influenciado minha interpretação?
+4. Lacunas de informação: Que dados importantes estão faltando?
+5. Alternativas explicativas: Que outras interpretações são possíveis?
+
+RESULTADO ESPERADO:
+- Lista de pontos fracos na análise original
+- Sugestões de como fortalecer os argumentos
+- Recomendações de fontes adicionais
+- Versão revisada mais equilibrada"
 ```
 
-## ✅ Melhores Práticas Avançadas
+## 8. Prompts Metacognitivos
 
-1. **Documente seus prompts exitosos**: Crie um repositório pessoal
-2. **Combine técnicas conforme necessidade**: Nem todas servem para tudo
-3. **Ajuste por modelo**: Gemini vs GPT vs Claude respondem diferente
-4. **Meça efetividade**: Tempo econom
+### Prompts que Refletem sobre o Próprio Processo
+
+```
+"Após analisar este documento governamental de 200 páginas sobre gastos públicos, quero que você reflita sobre seu próprio processo de análise:
+
+DOCUMENTO: [inserir ou referenciar documento]
+
+META-ANÁLISE SOLICITADA:
+1. Como você priorizou quais seções analisar primeiro?
+2. Que critérios usou para identificar informações relevantes?
+3. Que preconceitos ou limitações podem ter influenciado sua análise?
+4. Que perguntas você não consegue responder com os dados disponíveis?
+5. Que tipo de especialista humano seria mais útil para validar suas conclusões?
+6. Como você avaliaria a confiabilidade de sua própria análise (1-10)?
+
+Esta reflexão me ajudará a entender melhor os limites e forças de sua análise."
+```
+
+## 9. Prompts de Simulação de Cenários
+
+### Análise Prospectiva para Jornalismo
+
+```
+"Vamos simular diferentes cenários futuros baseados na aprovação (ou rejeição) desta lei no Congresso:
+
+LEI EM QUESTÃO: [descrever a lei]
+
+CENÁRIO 1 - Aprovação Integral:
+- Impactos imediatos (3 meses)
+- Consequências de médio prazo (1 ano)
+- Possíveis efeitos não intencionais
+- Grupos mais beneficiados/prejudicados
+
+CENÁRIO 2 - Rejeição Completa:
+- Manutenção do status quo
+- Pressões para alternativas
+- Impacto na agenda política
+- Reações dos stakeholders
+
+CENÁRIO 3 - Aprovação com Modificações:
+- Que mudanças são mais prováveis?
+- Como isso afetaria a eficácia da lei?
+- Que grupos pressionariam por quais mudanças?
+
+Para cada cenário:
+1. Probabilidade estimada (%)
+2. Indicadores para monitorar
+3. Fontes para acompanhar desdobramentos
+4. Ângulos jornalísticos mais promissores"
+```
+
+## 10. Prompts de Estruturação de Dados
+
+### Organização de Informações Complexas
+
+```
+"Organizei estas informações sobre um escândalo político complexo. Preciso estruturá-las para melhor compreensão:
+
+INFORMAÇÕES BRUTAS: [dump de informações desorganizadas]
+
+ORGANIZE EM:
+
+CRONOLOGIA:
+- [Data]: [Evento] - [Importância: alta/média/baixa]
+
+PERSONAGENS:
+- [Nome]: [Papel] - [Relevância] - [Status: investigado/testemunha/suspeito]
+
+FLUXOS FINANCEIROS:
+- [Origem] → [Intermediário] → [Destino] - [Valor] - [Data]
+
+EVIDÊNCIAS:
+- [Tipo]: [Descrição] - [Força probatória] - [Status de verificação]
+
+PENDÊNCIAS:
+- [O que precisa ser investigado]
+- [Fontes a contactar]
+- [Documentos a obter]
+
+ÂNGULOS NARRATIVOS:
+- [Perspectiva 1]: [Resumo do foco]
+- [Perspectiva 2]: [Resumo do foco]
+- [Perspectiva 3]: [Resumo do foco]"
+```
+
+## Implementação Gradual
+
+### Semana 1-2: Técnicas Básicas
+- Chain-of-Thought para análises simples
+- Few-shot prompting para formatos recorrentes
+
+### Semana 3-4: Técnicas Intermediárias
+- Prompt chaining para projetos complexos
+- Role-playing para múltiplas perspectivas
+
+### Semana 5-6: Técnicas Avançadas
+- Tree-of-Thoughts para investigações
+- Prompts metacognitivos para auto-reflexão
+
+### Adaptação Contínua
+- Documente o que funciona melhor para seu estilo
+- Crie biblioteca pessoal de prompts eficazes
+- Ajuste técnicas baseado em resultados
+
+## Medição de Eficácia
+
+### Métricas de Qualidade
+- **Precisão**: Informações corretas vs. total de informações
+- **Relevância**: Informações úteis vs. total de informações
+- **Completude**: Aspectos cobertos vs. aspectos necessários
+- **Eficiência**: Qualidade do resultado vs. tempo investido
+
+### Indicadores de Sucesso
+- Redução de tempo para pesquisa inicial
+- Melhoria na estruturação de matérias
+- Aumento na identificação de ângulos alternativos
+- Maior consistência na verificação de fatos
+
+---
+
+**Próximo passo:** Compreenda as [Limitações e Considerações Éticas](05-limitacoes-etica.md) para uso responsável dessas técnicas.
