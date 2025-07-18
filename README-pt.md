@@ -118,7 +118,6 @@ Este material educacional está disponível sob [Creative Commons Attribution 4.
 ## 🙏 Agradecimentos
 
 - AI Media Lab por tornar possível este conteúdo
-- Abraji pelo apoio institucional
 - Todos os jornalistas que estão explorando novas tecnologias
 
 ---
