@@ -1,6 +1,6 @@
 # Técnicas de Prompting para Periodistas
 
-Un recurso completo sobre técnicas de prompting con IA para profesionales del periodismo, desarrollado por AI Media Lab.
+Un recurso completo sobre técnicas de prompting con IA para profesionales del periodismo, desarrollado por AI Media Lab, un programa impulsado por Google News Initiative y desarrollado por la agencia Marktube Group con la Coordinación Académica realizada por Eon Institute con el objetivo de capacitar a periodistas, editores y líderes de medios en América Latina en el uso estratégico y ético de la inteligencia artificial (IA).
 
 ## 📚 Sobre este Repositorio
 
